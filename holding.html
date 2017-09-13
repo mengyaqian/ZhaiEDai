@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="审核提示">
+<meta name="keywords" content="审核提示">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="holding_banner1">
+      <img src="images/holding_banner1.png" width="100%" height="auto">
+    </div>
+    <div class="holding_banner2">
+      <div class="holding_tit">
+        <h3>正在为您做贷款审核</h3>
+        <p class="clear" id="dx"><i class="dian"></i><span style="margin-top:2px;float:left;width:95%;">审核完成我们将第一时间以短信通知您，请保持手机畅通</span></p>
+        <p class="clear"><i class="dian"></i><span style="margin-top:2px;float:left;width:95%;">如有问题请拨打客服电话<a href="tel:400-1000-800" class="color1">400-1000-800</a>进行咨询</span></p>
+        <p class="clear" id="gz"><i class="dian"></i><span style="margin-top:2px;float:left;width:95%;">您还可以通过关注<strong class="color2">平安普惠官方微信，</strong>及时了解贷款进度</span></p>
+      </div>
+    </div>
+    <div class="gz_weixinbtn" id="qgz">
+    <input type="button" value="去关注" class="gz_weixinbtns" id="btnNext-WX" onClick="gowx()">
+    </div>
+	
+</div>
+<div class="bottom_remind" ><img src="images/bottom.png" width="100%" height="auto"></div>
+  <div class="weixin_alertbox" id="weixin_alertbox">
+  <div class="alertbox_t" style="border-bottom:none;">
+    <h3>如何微信关注我们</h3>
+    <div class="close_btn" ></div>
+
+  </div>
+  <div class="alertbox_banner">
+    <img src="images/alertbox_banner.jpg" width="100%" height="auto">
+  </div>
+  <div class="alertbox_btn">
+      <div class="but_botton" style="margin:0 auto 10px;">
+      <input type="button" value="立即关注" class="mybutton btn_commom_bg" id="butNext"  onClick="weixin()">
+      </div>
+  </div>
+</div>
+<div class="black_full" id="black_full1" ></div>
+</body>
+<script src="/m/product/zed/2.0/js/jquery-1.8.3.min.js"></script>
+<script src="/m/product/zed/2.0/js/common.js"></script>
+<script type="text/javascript">
+var flag = getUrlParam("flag");
+if(flag=="hideWechat"){//GG同步申请单状态：待确认要款
+	$("#dx").hide();
+	$("#gz").hide();
+	$("#qgz").hide();
+}
+//截取URL相关参数
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return unescape(r[2]);
+	return "";
+}
+
+function weixin(){
+	window.location.href='weixin://dl/officialaccounts';
+}
+
+function gowx(){
+	$('#weixin_alertbox').css('display','block');
+	 $('#black_full1').css('display','block');
+	 SetDivCenter('weixin_alertbox');
+	}
+	$('.close_btn').click(function(){
+	   $('#weixin_alertbox').css('display','none');
+	 $('#black_full1').css('display','none');
+	})
+</script>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+</html>
+

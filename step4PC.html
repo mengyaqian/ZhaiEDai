@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+	name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="补充信息">
+<meta name="keywords" content="补充信息">
+<link href="css/mobile.css" rel="stylesheet" type="text/css" />
+<link href="css/default.css" rel="stylesheet" type="text/css" />
+<link href="css/mobiscroll.custom-2.5.0.min.css" rel="stylesheet"
+	type="text/css" />
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/mobiscroll.custom-2.5.0.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/artDialog.source.js"></script>
+<script src="My97DatePicker/WdatePicker.js"></script>
+</head>
+<body id="wrapper">
+<style>
+.info_header .info_hl{text-indent:10px;background:none;}
+.info_header .info_hl .addinfo3{width:15px;height:17px;float:left;padding-top:6px;}
+.info_header .info_hr .addinfo6{width:14px;height:14px;float:right;padding-top:2px;padding-right:8px}
+.mycon .tit .small_icon{background:none;}
+.mycon .tit_one .small_icon img{width:21px;height:24px;padding-top:8px;}
+.mycon .tit_two .small_icon img{width:27px;height:25px;padding-top:8px;}
+.tit .tit_right .tit_butbg1{background:#7191da}
+.tit .tit_right .tit_butbg2{background:#ef755d}
+.mycon .con li span,.other_info .con2 li span{float:right;width:15px;height:28px;background:none;}
+.mycon .con li span img,.other_info .con2 li span img{width:10px;height:16px;padding-right:5px;padding-top:6px}
+.addressul .top_choose .myreturn{position:fixed;top:0;left:15%;z-index:2;background:none}
+.con2 li select{float:left;width:50%;margin-left:20%;height:28px;}
+.con li select{float:left;width:50%;margin-left:20%;height:28px;}
+.con li .mylable,.con2 li .mylable,.add_info_yn .add_c .mylable{width:15%;display:block;float:left}
+.con li .mylable input,.con2 li .mylable input,.add_info_yn .add_c .mylable input{width:15px;padding-right:8px;}
+.con .con_ul .cqr_li .add_cqr{width:28px;height:28px;background:none;}
+.con .con_ul .cqr_li .add_cqr img{width:28px;height:28px;}
+.add_c i{float:left;width:50%;}
+.other_info .con2 li .mychange,.mycon .con li .mychange {width:15px;height:15px;margin-top:8px;margin-right:5px;}
+
+</style>
+<div id="loadingBox"><img src="images/loading.png"></div>
+<div class="container">
+<div class="info_header">
+<div class="info_hl"><img src="images/add_info_03.png" class="addinfo3">平安普惠保障您的信息安全</div>
+<div class="info_hr"><img src="images/add_info_06.png" class="addinfo6"><span>客服电话</span><a
+	href="tel:400-1000-800" class="kefu_tels">400-1000-800</a></div>
+</div>
+<!-- 信息内容 开始-->
+<div class="mybox"><!-- 1 -->
+<form name="person_in">
+<div class="mycon" id="person_in">
+<div class="tit tit_one" id="inpt01"
+	onclick="ShowHidden('inpt01','tit_right1','myimg1','person_in')">
+<div class="small_icon"><img src="images/add_info_10.png"></div>
+<p class="myinfo">个人信息</p>
+<div class="tit_right" id="tit_right1">
+<div class="tit_num tit_num1" style="display: none"></div>
+<div class="tit_butbg tit_butbg1"><img class="myimg" id="myimg1"
+	src="images/add_info_23.png"></div>
+</div>
+</div>
+<div class="con" id="mymake_1">
+<ul class="con_ul">
+	<li><i>住宅地址</i> <input type="text" name="address1"
+		onfocus="blur()" readonly id="inpt0101"
+		onclick="getAddress('inpt0101')" /> <span><img src="images/add_info_18.png"></span></li>
+	<li><i style="color: #fff">住宅地址2</i> <input type="text"
+		name="address2" id="inpt0102" placeholder="请输入详细地址"></li>
+	<li><i>申请额度</i> <input type="number" id="applyAmt"
+		placeholder="请输入申请额度"> <c>万</c></li>
+	<li class="bor_no"><i>婚姻状况</i>
+	<p class="selectp"><select id="inpt0103"
+		onchange="gethyzk(this.value,this.options[this.selectedIndex].text)">
+		<option value="10">未婚</option>
+		<option value="22">已婚有子女</option>
+		<option value="24">已婚无子女</option>
+		<option value="40">离异</option>
+		<option value="60">丧偶</option>
+		<option value="50">再婚</option>
+	</select></p>
+	<span></span></li>
+</ul>
+<!-- 配偶信息 -->
+<div id="other_info" class="other_info" style="display: none">
+<p class="other_tit"><i>配偶信息</i></p>
+<ul class="con2">
+	<li><i class="i2">配偶为共有人</i>
+	 <label><input class="mychange" type="checkbox" id="wife_c" name="wife_c" checked="checked" /> 是</label>
+	 <!-- <div class="checkbox" id="isSpouseOwner"><i class="but_txt1">否</i>
+	<i class="but_txt2">是</i> <input type="checkbox" id="wife_c"
+		name="wife_c" checked="checked" /> <label></label></div> -->
+	</li>
+	<li><i>配偶姓名</i><input type="text" name="inpt0201"
+		data-type="other_info" id="inpt0201" maxlength="10"></li>
+	<li class="bor_no"><i>证件类型</i>
+	<p class="selectp"><select
+		onchange="getContent(this.value,this.options[this.selectedIndex].text)"
+		data-type="other_info" id="inpt0202" name="idtype">
+		<option value="01" selected="selected">身份证</option>
+		<option value="02">军官证</option>
+		<option value="03">士兵证</option>
+	</select></p>
+	<span></span></li>
+	<li><i>证件号码</i><input type="text" id="inpt0203" name="idnum"
+		data-type="other_info" maxlength="18"></li>
+	<input type="hidden" name="hbir" data-type="other_info" id="hbir">
+	<!--如果选择身份证，隐藏获得出生日期-->
+	<li style="display: none;" id="Bir"><i>出生日期</i><input type="date"
+		data-type="hbir" class="scroller" id="inpt0204" name="hbir2" onClick="WdatePicker({maxDate:'%y-%M-%d'})"></li>
+	<li class="bor_no"><i>手机号</i><input type="tel"
+		data-type="other_info" id="inpt0205" name="tel" maxlength="11"></li>
+</ul>
+</div>
+</div>
+</div>
+</form>
+<!-- 2 -->
+<form name="MyAddInfo">
+<div class="mycon" id="MyAddInfo">
+<div class="tit tit_two" id="inpt03"
+	onclick="ShowHidden('inpt03','tit_right2','myimg2','MyAddInfo')">
+<div class="small_icon"><img src="images/add_info_20.png"></div>
+<p class="myinfo">房产信息</p>
+<div class="tit_right" id="tit_right2">
+<div class="tit_num tit_num2">14项</div>
+<div class="tit_butbg tit_butbg2"><img class="myimg" id="myimg2"
+	src="images/add_info_13.png"></div>
+</div>
+</div>
+<div class="con" id="mymake_2" style="display: none">
+<ul class="con_ul" style="border-bottom: 1px solid #dadada">
+	<li class="pr"><i>房产证号</i><input type="text" id="inpt0301"
+		placeholder="如：沪房权证监证字第20011033号"></li>
+	<li class="cqr_li"><i>产权人姓名</i><input class="cqr_name"
+		maxlength="33" name="inpt0302" id="inpt0302" type="text"
+		placeholder="多个产权人点＋添加"><span class="add_cqr"
+		onclick="Add_person('inpt0302')"><img src="images/add.png"></span></li>
+	<input type="hidden" name="Cqr_num" id="Cqr_num">
+	<!-- 隐藏传值，根据逗号个数获得产权人数 -->
+	<input type="hidden" id="userName">
+	<li><i>房屋坐落</i><input type="text" onfocus="blur()" readonly
+		id="inpt0311"><span><img src="images/add_info_18.png"></span></li>
+	<li><i style="color: #fff">房屋坐落2</i><input type="text"
+		placeholder="务必与房产证一致" id="inpt0311_1"></li>
+	<li><i>小区名称</i><input type="text" placeholder="请输入小区名称"
+		id="inpt0311_2" maxlength="10"></li>
+	<li><i>登记日期</i><input type="date" id="inpt0308" class="scroller"
+		onchange="changeYear()" onClick="WdatePicker({maxDate:'%y-%M-%d'})"><span></span></li>
+	<li><i>房产性质</i>
+	<p class="selectp"><select id="inpt0303">
+		<option value="010" selected>商品房</option>
+		<option value="020">拆迁安置房</option>
+		<option value="030">房改房</option>
+		<option value="040">自建房</option>
+		<option value="050">经济适用房</option>
+		<option value="070">其他</option>
+	</select></p>
+	<span></span></li>
+	<li><i>房屋类型</i>
+	<p class="selectp"><select id="inpt0304">
+		<option value="10" selected>普通住宅</option>
+		<option value="20">联排别墅</option>
+		<option value="30">独栋别墅</option>
+		<option value="40">其他</option>
+	</select></p>
+	<span></span></li>
+	<li><i>土地来源</i>
+	<p class="selectp"><select id="inpt0307">
+		<option value="10" selected>出让</option>
+		<option value="20">划拨</option>
+		<option value="30">转让</option>
+		<option value="40">其他</option>
+	</select></p>
+	<span></span></li>
+	<li class="fwmj"><i>房屋面积</i><input type="text" id="inpt0312"><span>平方米</span></li>
+	<li><i>楼层</i><input style="width: 14%" type="tel" id="inpt0313"
+		placeholder="请输入"><input style="float: right; width: 28%"
+		type="tel" id="inpt0313_1" placeholder="请输入"><i
+		style="float: right; width: 18%">总楼层</i></li>
+	<li><i class="ipark">有车位或花园</i>
+	<label><input type="checkbox" class="mychange" />是</label>
+	<!-- <div class="checkbox" id="isParkingGarden"><i class="but_txt1">否</i>
+	<i class="but_txt2">是</i> <input type="checkbox" /> <label></label></div> -->
+	</li>
+	<!--<li><i>建成年代</i><input type="date" id="inpt0306"  ><span></span></li>
+				 <li><i>建成年代</i><input type="date" id="inpt0306" class="scroller3"  ><span></span></li>-->
+	<li><i>建成年代</i>
+	<p class="selectp"><select id="inpt0306">
+
+	</select></p>
+	<span></span></li>
+	<li><i>房产现状</i>
+	<p class="selectp"><select id="inpt0305">
+		<option value="01" selected>自住</option>
+		<option value="02">租赁</option>
+		<option value="03">空置</option>
+		<option value="04">其他</option>
+	</select></p>
+	<span></span></li>
+</ul>
+<div class="add_info_yn">
+<div class="add_c"><i>有二套房</i>
+<label><input type="checkbox" id="inpt04" onclick="HaveTwoHouse('inpt04','mytwoh1')" /> 是</label>
+ <!-- <div class="checkbox" id="isHaveSecHouse"><i class="but_txt1">否</i>
+<i class="but_txt2">是</i> <input type="checkbox" id="inpt04"
+	onclick="HaveTwoHouse('inpt04','mytwoh1')" /> <label></label></div> -->
+</div>
+<!-- 有二套房之后显示 -->
+<div class="my_twohouse" id="mytwoh1" style="display: none;">
+<p class="mytwo_tit"><i>二套房信息</i></p>
+<ul class="con_ul">
+	<li class="cqr_li"><i>产权人姓名</i><input class="cqr_name"
+		id="inpt0402" data-type="my_twohouse" type="text"
+		placeholder="多个产权人点＋添加"><span class="add_cqr"
+		onclick="Add_person('inpt0402')"></span></li>
+	<li class="fwmj"><i>房屋面积</i><input type="text" name="inpt0402m"
+		data-type="my_twohouse" id="inpt0402m"><span>平方米</span></li>
+	<li><i>房屋类型</i>
+	<p class="selectp"><select id="inpt0403" data-type="my_twohouse">
+		<option></option>
+		<option value="10">普通住宅</option>
+		<option value="20">联排别墅</option>
+		<option value="30">独栋别墅</option>
+		<option value="40">其他</option>
+	</select></p>
+	<span></span></li>
+	<li><i>坐落地址</i><input type="text" onfocus="blur()"
+		data-type="my_twohouse" readonly onclick="getAddress('inpt0404')"
+		id="inpt0404"><span><img src="images/add_info_18.png"></span></li>
+	<li><i style="color: #fff">坐落地址2</i><input type="text"
+		data-type="my_twohouse" placeholder="请输入详细地址" id="inpt0404_1"></li>
+
+</ul>
+</div>
+
+<div class="add_c bb0"><i>已有抵押</i>
+ <label><input type="checkbox" id="inpt05" onclick="HaveTwoHouse('inpt05','mytwoh2')" />是</label>
+ <!-- <div class="checkbox" id="isHouseMortgage"><i class="but_txt1">否</i>
+<i class="but_txt2">是</i> <input type="checkbox" id="inpt05"
+	onclick="HaveTwoHouse('inpt05','mytwoh2')" /> <label></label></div> -->
+</div>
+<!-- 有抵押之后显示 -->
+<div class="my_twohouse bb0" id="mytwoh2" style="display: none">
+<p class="mytwo_tit"><i>一押信息</i></p>
+<div class="add_c bb0" style="border-top: 0;"><i>是否为商业银行</i>
+<label><input type="checkbox" id="TwoHouse3" onclick="HaveTwoHouse('TwoHouse3','mytwoh3')" /> 是</label>
+ <!-- <div class="checkbox" id="isCommercialBank"><i class="but_txt1">否</i>
+<i class="but_txt2">是</i> <input type="checkbox" id="TwoHouse3"
+	onclick="HaveTwoHouse('TwoHouse3','mytwoh3')" /> <label></label></div> -->
+</div>
+</div>
+
+<div class="my_twohouse bb0" id="mytwoh3" style="display: none">
+<ul class="con_ul">
+	<li style="border-top: 1px solid #dadada;"><i class="li_long2">一押贷款种类</i>
+	<p class="selectp"><select id="inpt0503" data-type="TwoHouse3">
+		<option></option>
+		<option value="0001">纯商业贷款</option>
+		<option value="0002">公积金贷款</option>
+		<option value="0003">公积金组合贷款</option>
+		<option value="0004">其他贷款</option>
+	</select></p>
+	<span></span></li>
+	<li><i class="li_long2">一押权利人</i><input class="twohouse_input"
+		data-type="TwoHouse3" id="inpt0504" type="text" maxlength="100"></li>
+	<li><i class="li_long2">一押贷款金额</i><input class="twohouse_input"
+		data-type="TwoHouse3" type="text" name="inpt5055m" id="inpt5055m" placeholder="请保留小数点后两位"><span
+		class="two_house_span">万元</span></li>
+	<li><i class="li_long2">一押贷款余额</i><input class="twohouse_input"
+		data-type="TwoHouse3" type="text" name="inpt5056m" id="inpt5056m" placeholder="请保留小数点后两位" ><span
+		class="two_house_span">万元</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- 信息内容 结束-->
+<div class="but_botton"><input type="button" value="下一步"
+	class="mybutton2" id="btnNext" onclick="step3_judge()"></div>
+<!-- 全屏背景弹框选择城市以及详细地址 -->
+<div class="dialog_full">
+<div class="container">
+<div class="addresstop" style="display: none"><span class="span1">省份</span><span
+	class="span2"></span><span class="span3"></span></div>
+<div class="addressul"></div>
+</div>
+</div>
+<!-- 房产证提示弹框 -->
+
+<!-- <div class="diabank" id="diabank3"
+	style="height: 350px; margin-top: -175px">
+<div class="yydiar">
+<p class="myclose" onclick="closediar()"></p>
+<p class="b_tit">房产证样本</p>
+<div class="myfcz" style="height: 300px;"></div>
+</div>
+</div> -->
+<!-- 黑色半透明蒙版 -->
+<div class="black_full" id="black_full3"></div>
+<!-- 产权人是否完整弹框 -->
+	  <div class="diabank" id="ts" style="height:200px;margin-top:-80px;">
+	     <p class="ansp">该套房产“产权人”是否已填写完整？若需增加，请点击+后进行填写</p>
+		 <span class="ansp1 ml" id="ml">已填完</span>
+		 <span class="ansp1 mr" id="mr">增加产权人</span>
+	  </div>
+
+<!-- 等待提示代码 -->
+<div class="waitpic" id="waitpic">
+<div class="waitbg"></div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+//页面加载完成之后去掉Loading
+$(document).ready(function(){
+   queryHintCallback("loadingBox");
+});
+</script>
+
+
+<script>
+/*
+ * 个人信息部分收不起来
+ */
+ 	var person_info_count,c1,c2;
+ 	var hourse_info_count,c3,c5;
+	function ShowHidden(mytit,myright,myimg,mypid){
+	    var isvisible =  $('#'+mytit).next('.con').is(":visible");//是否可见
+		//var person_info_count  = ''; //个人信息总数
+		//var hourse_info_count = ''; //房产信息总数
+		//算出个人信息总数
+		if(mytit == "inpt03" && !isvisible){
+			 c1 = $('#other_info').is(":hidden");
+			 c2 = $('#Bir').is(":hidden");
+			  if(c1 == true){
+				person_info_count = 4 ;
+			  }else if(c2 == true){
+				person_info_count = 8;
+			  }else{
+			   person_info_count = 9;
+			  }
+		
+		  
+		  //个人信息计算百分比填写了多少个
+		  var $input = $("#mymake_1 input[type='text']");
+		  var $input1_1 = $("#mymake_1 input[type='number']");
+		  var $input2 = $("#mymake_1 input[type='tel']");
+		  var $input2_2= $("#mymake_1 select");
+		  var $input2_3= $("#mymake_1 input[type='date']");
+		  var inum1 = 0;
+		  var inum1_1 = 0;
+		  var inum2 = 0;
+		  var inum2_2 = 0 ;
+		  var inum2_3 =0;
+		   $input.each(function(){
+		      if($(this).val() != ''){
+			      if(c1 && $(this).attr("data-type")!="other_info" && $(this).attr("data-type")!="bir"){
+			    	  inum1 += 1;
+				  }else if(!c1 && c2 && $(this).attr("data-type")!="bir"){
+					  inum1 += 1;
+				  }else if(!c1 && !c2){
+					  inum1 += 1;
+				  }
+			  }
+		   })
+		    $input1_1.each(function(){
+		      if($(this).val() != ''){
+			      if(c1 && $(this).attr("data-type")!="other_info" && $(this).attr("data-type")!="bir"){
+			    	  inum1_1 += 1;
+				  }else if(!c1 && c2 && $(this).attr("data-type")!="bir"){
+					  inum1_1 += 1;
+				  }else if(!c1 && !c2){
+					  inum1_1 += 1;
+				  }
+			  }
+		   })
+		   $input2.each(function(){
+		      if($(this).val() != ''){
+		    	  if(c1 && $(this).attr("data-type")!="other_info" && $(this).attr("data-type")!="bir"){
+			    	  inum2 += 1;
+				  }else if(!c1 && c2 && $(this).attr("data-type")!="bir"){
+					  inum2 += 1;
+				  }else if(!c1 && !c2){
+					  inum2 += 1;
+				  }
+			  }
+		   })
+		   $input2_2.each(function(){
+		      if($(this).val() != ''){
+		    	  if(c1 && $(this).attr("data-type")!="other_info" && $(this).attr("data-type")!="bir"){
+			    	  inum2_2 += 1;
+				  }else if(!c1 && c2 && $(this).attr("data-type")!="bir"){
+					  inum2_2 += 1;
+				  }else if(!c1 && !c2){
+					  inum2_2 += 1;
+				  }
+			  }
+		   })
+		    $input2_3.each(function(){
+		      if($(this).val() != ''){
+		    	  if(c1 && $(this).attr("data-type")!="other_info" && $(this).attr("data-type")!="bir"){
+		    		  inum2_3 += 1;
+				  }else if(!c1 && c2 && $(this).attr("data-type")!="bir"){
+					  inum2_3 += 1;
+				  }else if(!c1 && !c2){
+					  inum2_3 += 1;
+				  }
+			  }
+		   })
+		   var inum = inum1+inum1_1+inum2+inum2_2+inum2_3;
+		   var bfb1 = parseInt(inum/person_info_count*100)+'%';
+		   $('.tit_num1').text(bfb1);
+		}
+		 //算出房产信息总数;
+		 if(mytit == "inpt01" && !isvisible){
+			 c3= $('#inpt04').is(':checked');
+			 c4= $('#inpt05').is(':checked');
+			 c5= $('#TwoHouse3').is(':checked');
+		   if(c3 == true && c5 == true){
+			  hourse_info_count = 23;
+		   }else if(c3 == true && c5 ==false){
+			   hourse_info_count = 19;
+		   }else if(c3 == false && c5 == true){
+			  hourse_info_count =18;
+		   }else{
+			  hourse_info_count =14;
+		   }
+	     
+		   
+			//房产信息计算百分比
+		  var $input3 = $("#mymake_2 input[type='text']");
+		  var $input4 = $("#mymake_2 input[type='tel']");
+		  var $input4_4 = $("#mymake_2 select");
+		   var $input4_5 = $("#mymake_2 input[type='date']");
+		  var inum3 = 0;var inum4 = 0;inum4_4=0;inum4_5=0;
+		    $input3.each(function(){
+		      if($(this).val() != ''){
+		    	  if(c3 && !c5 && $(this).attr("data-type")!="TwoHouse3"){
+		    		  inum3 += 1;
+				  }else if(!c3 && !c5 && $(this).attr("data-type")!="my_twohouse" && $(this).attr("data-type")!="TwoHouse3"){
+					  inum3 += 1;
+				  }else if(!c3 && c5 && $(this).attr("data-type")!="my_twohouse"){
+					  inum3 += 1;
+				  }else if(c3 && c5){
+					  inum3 += 1;
+				  }
+			  }
+		   })
+		   $input4.each(function(){
+		      if($(this).val() != ''){
+		    	  if(c3 && !c5 && $(this).attr("data-type")!="TwoHouse3"){
+		    		  inum4 += 1;
+				  }else if(!c3 && !c5 && $(this).attr("data-type")!="my_twohouse" && $(this).attr("data-type")!="TwoHouse3"){
+					  inum4 += 1;
+				  }else if(!c3 && c5 && $(this).attr("data-type")!="my_twohouse"){
+					  inum4 += 1;
+				  }else if(c3 && c5){
+					  inum4 += 1;
+				  }
+			  }
+		   })
+		    $input4_4.each(function(){
+		      if($(this).val() != '' && $(this).val() != null){
+		    	  if(c3 && !c5 && $(this).attr("data-type")!="TwoHouse3"){
+		    		  inum4_4 += 1;
+				  }else if(!c3 && !c5 && $(this).attr("data-type")!="my_twohouse" && $(this).attr("data-type")!="TwoHouse3"){
+		    		  inum4_4 += 1;
+				  }else if(!c3 && c5 && $(this).attr("data-type")!="my_twohouse"){
+					  inum4_4 += 1;
+				  }else if(c3 && c5){
+					  inum4_4 += 1;
+				  }
+			  }
+		   })
+		     $input4_5.each(function(){
+		      if($(this).val() != ''){
+		    	  if(c3 && !c5 && $(this).attr("data-type")!="TwoHouse3"){
+		    		  inum4_5 += 1;
+				  }else if(!c3 && !c5 && $(this).attr("data-type")!="my_twohouse" && $(this).attr("data-type")!="TwoHouse3"){
+		    	 	  inum4_5 += 1;
+				  }else if(!c3 && c5 && $(this).attr("data-type")!="my_twohouse"){
+					  inum4_5 += 1;
+				  }else if(c3 && c5){
+					  inum4_5 += 1;
+				  }
+			  }
+		   })
+		    var inu = inum3+inum4+inum4_4+inum4_5;	
+		   var bfb2 = parseInt(inu/hourse_info_count*100)+'%';
+		   $('.tit_num2').text(bfb2);
+		 }
+	  //展开收缩
+	   if(isvisible == false){//如果不可见
+		    $('.con').css('display','none');
+			$('#'+mytit).next('.con').css('display','block');
+			$('.myimg').attr("src","images/add_info_13.png");
+			$('#'+myimg).attr("src","images/add_info_23.png");
+			$('.tit_num').css('display','block');
+		    $('#'+myright).children('.tit_num').css('display','none');
+	   }
+	   if(isvisible == true){//如果可见则验证保存
+	      if(mypid == 'person_in'){
+			if(Info_ju2() != false){
+			    $save(false,false,"info");
+			}
+		  }else if(mypid == "MyAddInfo"){
+		   	if(House_ju2() != false){
+			    $save(false,false,"fangchan");
+			}
+		  }else{
+		  }
+	   }
+	}
+
+	function showFangchan(){
+		var isvisible =  $('#inpt03').next('.con').is(":visible");
+		if(!isvisible){
+			ShowHidden('inpt03','tit_right2','myimg2','showFangchan');
+		}
+	}
+	
+	//显示婚姻状况选择
+	function gethyzk(value,content){
+	    if(content == '未婚' || content == '离异' ||content == '丧偶' || content==''){
+		   $('#Bir').css('display','none');
+		   $('#other_info').slideUp();
+		}else{
+		   $('#other_info').slideDown();
+		}
+	}
+
+	
+	//显示证件类型
+	  function getContent(value,content){
+		// alert("选中的值是"+value+"选中的内容是"+content);
+		 if(content == '身份证'){
+		  $('#Bir').css('display','none');
+		  $('#inpt0204').val("");
+		   $('#inpt0203').blur(function(){
+				var idcard = $(this).val();
+				var year = idcard. substr(6,4);//年
+				var month = idcard. substr(10,2);//月
+				var day = idcard. substr(12,2);//日
+				$('#hbir').val(year+'-'+month+'-'+day);
+			})	
+		}else{
+		   $('#Bir').css('display','block');
+		}
+	  }
+	
+	
+		//点击加号添加逗号
+		function Add_person(InputId){
+		  var fh = '，';
+		  var myval = $('#'+InputId).val();
+		  $('#'+InputId).val(myval+fh);
+		  $('#'+InputId).focus();  
+		}
+
+	//有二套房则显示 有抵押显示  
+	
+	function HaveTwoHouse(checkchoose,showdiv){
+		   var yes = $('#'+checkchoose).is(':checked');
+		   if(yes == true){
+		      $('#'+showdiv).slideDown();
+		      var yesY = $('#TwoHouse3').is(':checked');
+		      if("mytwoh2" == showdiv && yesY){
+		        	$('#mytwoh3').slideDown();
+				  }
+		   }else{
+		        if("mytwoh2" == showdiv){
+		        	$('#mytwoh3').slideUp();
+		        	$('#TwoHouse3').attr("checked",false);
+				  }
+		        $('#'+showdiv).slideUp();
+		   }
+		}
+		
+		//二套房小区名称获得
+		$('#inpt0404').click(function(){
+		    $('.dialog_full').css('display','block');
+			$('#map_ul').css('display','none');
+			$('#map_ul2').css('display','block');
+			var ad1 = $('#inpt0101').val();
+			var ad2 = $('#inpt0102').val();
+			if(ad1 != ''){
+		    $('#oldadd').css('display','block');
+			$('#p3').text(ad1);
+			$('#p4').text(ad2);
+			$('#p2').click(function(){
+				 var val2= $('#p4').text();
+				 $('#inpt0404').val(val2);
+				 $('.dialog_full').css('display','none');
+			});
+			}else{return;}
+		})
+	//房产证号提示弹框
+	function step3_fcz(){
+     $('#black_full3').css('display','block');
+	 $('#diabank3').css('display','block');
+    }
+    //关闭房产证号提示弹框
+	  function closediar(){
+	     $('#black_full3').css('display','none');
+	     $('#diabank3').css('display','none');
+	  }
+
+	//验证其他信息
+	function step3_judge(){
+	     if(!Info_ju()){
+		 	return;
+		 }
+	     if(!House_ju()){
+	    	showFangchan();
+		 	return;
+		 }
+		//获取产权人个数
+		var str =document.MyAddInfo.inpt0302.value;
+		str = $.trim(str);
+		var arr =new Array();
+	    arr =str.split('，');
+		document.MyAddInfo.Cqr_num.value = arr.length; //产权人个数
+		var myself = $("#userName").val();
+		var mywife = $('#inpt0201').val();
+		if(jQuery.inArray(myself,arr)>=0 && jQuery.inArray(mywife,arr)>=0){
+			    arr.splice(jQuery.inArray(myself,arr),1);
+		   	    arr.splice(jQuery.inArray(mywife,arr),1);
+		
+		}else if(jQuery.inArray(myself,arr)>=0 &&jQuery.inArray(mywife,arr)<0){
+		    arr.splice(jQuery.inArray(myself,arr),1);
+		}else if(jQuery.inArray(myself,arr)<0 &&jQuery.inArray(mywife,arr)>=0){
+		    arr.splice(jQuery.inArray(mywife,arr),1);
+		}else{
+		   arr;
+		}
+		
+		//提示房屋产权人是否完整函数
+		$('#black_full3').css('display','block');
+	    $('#ts').css('display','block');
+		$('#ml').click(function(){
+			$("#mr").off();
+			$("#ml").off();
+		    $('#black_full3').css('display','none');
+	        $('#ts').css('display','none');
+	        if(arr != ''){
+	     	   //把非本人和妻子的其他共有人存到cookie里
+	     	   if(House_ju() != false && Info_ju() != false){
+	     		   	  $save(true,true,"all");
+	     		};	   
+	     	}else{
+	     	  //alert('跳过共有人页面');
+	     	    if(House_ju() != false && Info_ju() != false){
+	     	    	$save(false,true,"all");
+	     		};
+	     	}
+		})
+		$('#mr').click(function(){
+			$("#mr").off();
+			$("#ml").off();
+		    $('#black_full3').css('display','none');
+	        $('#ts').css('display','none');
+			$('#inpt0302').focus();
+		})
+	}
+</script>
+<script>
+	//证件校验
+	//var zjReg=/^[\u4e00-\u9fa5,\\w,\\d,\\-]{0,13}$/;
+
+		//个人信息判断
+	  function Info_ju(){
+		var inpt0101=document.person_in.address1.value; //城市
+		var inpt0102=document.person_in.address2.value; // 详细地址
+		var applyAmt=$("#applyAmt").val(); // 申请金额
+		var inpt0103= $('#inpt0103 option:selected').val();  // 婚姻
+		var inpt0201=document.person_in.inpt0201.value; // 配偶姓名
+		var inpt0202=$('#inpt0202 option:selected').val(); // 证件类型
+		var inpt0203=document.person_in.idnum.value; // 证件号码
+		inpt0203 = inpt0203.replace(/[ ]/g,"")
+		var inpt0204=document.person_in.hbir2.value; // 出去日期
+		var inpt0205=document.person_in.tel.value; // 电话号码
+		inpt0205 = inpt0205.replace(/[ ]/g,"");
+		var mathReg = /^[0-9]+(.[0-9]{0,2})?$/;
+		if(inpt0101 == ""){
+				alertMsg('请选择住宅所在城市');
+	          	return false;	
+		}
+	   if(inpt0102 == ""){
+			alertMsg('请输入住宅详细地址');
+	        return false;	
+	   }
+		var houseLocatedTest = /[一二三四五六七八九十〇壹贰叁肆伍陆柒捌玖零1234567890]+/g;;
+		if(inpt0102 !="" && !houseLocatedTest.test(inpt0102)){
+			alertMsg('住宅详细地址不完整');
+			return false;
+		}
+	   if(applyAmt == "" || !mathReg.test(applyAmt)){
+			alertMsg('请输入正确的借款金额(两位小数)');
+	      		return false;	
+	   }
+	   if(applyAmt <15 || applyAmt > 500){
+			alertMsg('请输入正确的借款金额(15~500万)');
+	   		return false;	
+		}
+	   if(inpt0103 == ""){
+			alertMsg('请选择婚姻状况');
+	        	return false;
+		}
+		if(inpt0103 == "22"||inpt0103 == "24"||inpt0103 == "50"){
+			if(inpt0201 == ""){
+			      alertMsg('请填写配偶姓名');
+				  return false;
+		    }
+			if(inpt0202 == ""){
+			      alertMsg('请填写证件类型');
+				  return false;
+		    }
+			if(inpt0203 == ""){
+			      alertMsg('请填写证件号');
+				  return false;
+		    }
+		    if(inpt0202 == '01' && !idCardValidate($("#inpt0203"))){
+			      alertMsg('您提供的身份证号码有误，请重新填写');
+				  return false;
+		  	}
+		   if(inpt0202 == "03"||inpt0202 == "02"){
+			 if(inpt0204 == ""){
+			      alertMsg('请填写出生日期');
+				  return false;
+				 }
+		    }
+			if(inpt0205 == ""){
+			      alertMsg('请填写手机号');
+				  return false;
+		    }
+			if(inpt0205 !='' && ! /^1[34578]\d{9}$/.test(inpt0205)){
+			      alertMsg('您提供的手机号码格式不正确，请重新填写');
+				  return false;
+			   }
+			}
+		return true;
+       }
+	//个人信息判断
+	function Info_ju2(){
+		var inpt0101=document.person_in.address1.value; //城市
+		var inpt0102=document.person_in.address2.value; // 详细地址
+		var applyAmt=$("#applyAmt").val(); // 申请金额
+		var inpt0103= $('#inpt0103 option:selected').val();  // 婚姻
+		var inpt0201=document.person_in.inpt0201.value; // 配偶姓名
+		var inpt0202=$('#inpt0202 option:selected').val(); // 证件类型
+		var inpt0203=document.person_in.idnum.value; // 证件号码
+		inpt0203 = inpt0203.replace(/[ ]/g,"")
+		var inpt0204=document.person_in.hbir2.value; // 出去日期
+		var inpt0205=document.person_in.tel.value; // 电话号码
+		inpt0205 = inpt0205.replace(/[ ]/g,"");
+		var mathReg = /^[0-9]+(.[0-9]{0,2})?$/;
+		var houseLocatedTest = /[一二三四五六七八九十〇壹贰叁肆伍陆柒捌玖零1234567890]+/g;;
+		if(inpt0102 !="" && !houseLocatedTest.test(inpt0102)){
+			alertMsg('房屋详细地址不完整');
+			return false;
+		}
+	
+	   if(applyAmt != "" && !mathReg.test(applyAmt)){
+			alertMsg('请输入正确的借款金额(两位小数)');
+     		return false;	
+	   }
+	   if(applyAmt != "" && (applyAmt <15 || applyAmt > 500)){
+			alertMsg('请输入正确的借款金额(15~500万)');
+  			return false;	
+		}
+		if(inpt0103 == "22"||inpt0103 == "24"||inpt0103 == "50"){
+		    if(inpt0202 == '01' && !idCardValidate($("#inpt0203"))){
+			      alertMsg('您提供的身份证号码有误，请重新填写');
+				  return false;
+		  }
+		   if(inpt0202 == "02"||inpt0202 == "03"){
+			if(inpt0205 !='' && ! /^1[34578]\d{9}$/.test(inpt0205)){
+			      alertMsg('您提供的手机号码格式不正确，请重新填写');
+				  return false;
+			   }
+			}
+		}
+		return true;
+     }
+	
+	   //房产信息判断--------
+	function House_ju(){
+	  var inpt0301=document.MyAddInfo.inpt0301.value;  //房产证号
+	  var inpt0302=document.MyAddInfo.inpt0302.value;  //产权人
+	  var inpt0311=document.MyAddInfo.inpt0311.value;  //房产坐落
+	  var inpt0311_1=document.MyAddInfo.inpt0311_1.value;  //房产坐落
+	  var inpt0311_2=document.MyAddInfo.inpt0311_2.value;  //小区名称
+	  var inpt0308=document.MyAddInfo.inpt0308.value;  //登记日期
+	  var inpt0303=$('#inpt0303 option:selected').text();  //房产性质
+	  var inpt0303val = $('#inpt0303').val();
+	  var inpt0304=$('#inpt0304 option:selected').text();  //房屋类型
+	  var inpt0304val = $('#inpt0304').val();
+	  var inpt0307=$('#inpt0307 option:selected').text();  //土地来源
+	  var inpt0312=document.MyAddInfo.inpt0312.value;  //房屋面积
+	  var inpt0306=document.MyAddInfo.inpt0306.value;  //建筑年代
+	  var inpt0305=$('#inpt0305 option:selected').text();  //房产现状
+	  var inpt0313=document.MyAddInfo.inpt0313.value; //楼层数
+	  var inpt0313_1=document.MyAddInfo.inpt0313_1.value; //总楼层数
+	  
+	  var inpt0402=document.MyAddInfo.inpt0402.value;  //二套房产权人
+	  var inpt0402m=document.MyAddInfo.inpt0402m.value;  //二套房面积
+	  var inpt0403=$('#inpt0403 option:selected').text();  //二套房房屋类型
+	  var inpt0404=document.MyAddInfo.inpt0404.value;  //二套房房屋位置
+	  var inpt0404_1=document.MyAddInfo.inpt0404_1.value;  //二套房房屋详细位置
+	  
+	  var inpt0503=$('#inpt0503 option:selected').text();  //已押贷款种类
+	  var inpt0504=document.MyAddInfo.inpt0504.value;  //已押权利人
+	  var inpt5055m=document.MyAddInfo.inpt5055m.value;  //已押贷款金额
+	  var inpt5056m=document.MyAddInfo.inpt5056m.value;  //已押贷款余额
+	  var ownerNames = inpt0302.split("，");
+	  var namereg = /^[\u4E00-\u9FA5\·]{2,10}$/;
+	  var hzreg = /^[\u4E00-\u9FA5\·]{1,10}$/;
+	  var mathReg = /^[0-9]+(.[0-9]{0,2})?$/;
+	  var NUM_4 =/^([1-9]\d{0,3}|0)(\.\d{1,4})?$/;
+	  var lcReg = /^[0-9]{1,3}$/;
+	  if(inpt0301 == ""){
+		  	alertMsg('请填写房产证号');
+			return false;
+		}
+		for ( var i = 0; i < ownerNames.length; i++) {
+			if(ownerNames[i] == ''){
+				alertMsg('产权人姓名填写有误,请不要有多余的（，）或非中文字符');
+				return false;
+			}
+			if(ownerNames[i].length >10){
+				alertMsg( '产权人姓名不要超过十个字符');
+				return false;
+			}
+			if(!namereg.test(ownerNames[i])){
+				alertMsg( '产权人姓名填写有误,请不要有多余的（，）或非中文字符');
+				return false;
+			}
+		}
+		if(inpt0311 == ""){
+			alertMsg( '请填写房产位置');
+			return false;
+		}
+		if(inpt0311_1 == ""){
+			alertMsg(  '请填写房产详细位置');
+			return false;
+		}
+		var houseLocatedTest = /[一二三四五六七八九十〇壹贰叁肆伍陆柒捌玖零1234567890]+/g;;
+		if(!houseLocatedTest.test(inpt0311_1)){
+			alertMsg('房屋详细地址不完整');
+			return false;
+		}
+		 if(inpt0311_2 == ""){
+		      alertMsg('请填写小区名称');
+			   return false;
+		}
+		var d = dateDiff("d",$("#inpt0308").val(),nowData);
+		if(d < 180 ){
+			alertMsg('房产证持证时间不符合宅e贷政策');
+			return false;
+		}
+		var year = dateDiff("year",$("#inpt0306").val(),nowData);
+		if(year > 30 ){
+			alertMsg('房龄不符合宅e贷政策');
+			return false;
+		}
+		var d = dateDiff("D",$("#inpt0306").val(),$("#inpt0308").val());
+		if(d < 0 ){
+			alertMsg('建成年代不应晚于房产证持证时间');
+			return false;
+		}
+		  if(inpt0308 == ""){
+			      alertMsg('请选择登记日期');
+				  return false;
+		  }
+		  if(inpt0303 == ""){
+			      alertMsg('请选择房产性质');
+				   return false;
+		  }
+
+		  if(inpt0303val == '020' || inpt0303val == '030' || inpt0303val == '040' || inpt0303val == '050' ||inpt0303val == '070'  ){
+			      alertMsg('房产性质不符合宅e贷政策');
+				   return false;
+		  }
+		  if(inpt0304 == ""){
+			      alertMsg('请选择房屋类型');
+				   return false;
+		  }
+		  if(inpt0304val != '10'){
+			      alertMsg('房屋类型不符合宅e贷政策');
+				   return false;
+		  }
+		  if(inpt0307 == ""){
+			      alertMsg('请选择土地来源');
+				   return false;
+		  }
+		  if(inpt0312 == "" || !NUM_4.test(inpt0312)){
+			      alertMsg('请正确填写房屋面积');
+				   return false;
+		  }
+		  if(inpt0313 == "" || !lcReg.test(inpt0313) || inpt0313=="0" ){
+			      alertMsg('请正确填写楼层');
+				   return false;
+		  }
+		  if(inpt0313_1 == "" || !lcReg.test(inpt0313_1) || inpt0313_1=="0"){
+			      alertMsg('请正确填写总楼层');
+				   return false;
+		  }
+		  if(parseInt(inpt0313_1) < parseInt(inpt0313) ){
+			      alertMsg('楼层数不能大于总楼层数');
+				   return false;
+		  }
+		  if(inpt0306 == ""){
+			      alertMsg('请选择建成年代');
+				   return false;
+		  }
+		  if(inpt0305 == ""){
+			      alertMsg('请选择房产现状');
+				   return false;
+		  }
+		  //选中有二套房
+		  if($("#inpt04").is(':checked')){
+			  if(inpt0402 == ""){
+					  alertMsg('请填写二套房产权人姓名');
+					  return false;
+				}
+			  ownerNames =  inpt0402.split("，");
+			  for ( var i = 0; i < ownerNames.length; i++) {
+					if(ownerNames[i] == ''){
+						alertMsg('二套房产权人姓名填写有误,请不要有多余的（，）或非中文字符');
+						return false;
+					}
+					if(!namereg.test(ownerNames[i])){
+						alertMsg('二套房产权人姓名填写有误,请不要有多余的（，）或非中文字符');
+						return false;
+					}
+				}
+				if(inpt0402m == "" || !NUM_4.test(inpt0402m)){
+			      alertMsg('请正确填写二套房面积');
+				  return false;
+				}
+			   if(inpt0403 == ""){
+			      alertMsg('请填写二套房房屋类型');
+				  return false;
+			   }
+			   if(inpt0404 == ""){
+			      alertMsg('请填写二套房房屋位置');
+				  return false;
+		        }
+				 if(inpt0404_1 == ""){
+			      alertMsg('请填写二套房房屋详细位置');
+				  return false;
+		        }
+			   }
+        //选中有抵押
+       if($("#TwoHouse3").is(':checked') && $("#inpt05").is(':checked')){
+	      if(inpt0503 == ""){
+			      alertMsg('请选择一押贷款种类');
+				   return false;
+		  }
+		  if(inpt0504 == ""){
+			      alertMsg('请填写一押权利人');
+				   return false;
+		  }
+		  if(inpt5055m == "" || !mathReg.test(inpt5055m)){
+			      alertMsg('请填写一押贷款金额');
+				   return false;
+		  }
+		  if(inpt5056m == "" || !mathReg.test(inpt5056m)){
+			      alertMsg('请填写一押贷款余额');
+				   return false;
+		  }
+	   }
+ 	   return true;
+      
+}
+	 //房产信息判断--------
+		function House_ju2(){
+		  var inpt0301=document.MyAddInfo.inpt0301.value;  //房产证号
+		  var inpt0302=document.MyAddInfo.inpt0302.value;  //产权人
+		  var inpt0311=document.MyAddInfo.inpt0311.value;  //房产坐落
+		  var inpt0311_1=document.MyAddInfo.inpt0311_1.value;  //房产坐落
+		  var inpt0311_2=document.MyAddInfo.inpt0311_2.value;  //小区名称
+		  var inpt0308=document.MyAddInfo.inpt0308.value;  //登记日期
+		  var inpt0303=$('#inpt0303 option:selected').text();  //房产性质
+		  var inpt0303val = $('#inpt0303').val();
+		  var inpt0304=$('#inpt0304 option:selected').text();  //房屋类型
+		  var inpt0304val = $('#inpt0304').val();
+		  var inpt0307=$('#inpt0307 option:selected').text();  //土地来源
+		  var inpt0312=document.MyAddInfo.inpt0312.value;  //房屋面积
+		  var inpt0306=document.MyAddInfo.inpt0306.value;  //建筑年代
+		  var inpt0305=$('#inpt0305 option:selected').text();  //房产现状
+		  var inpt0313=document.MyAddInfo.inpt0313.value; //楼层数
+		  var inpt0313_1=document.MyAddInfo.inpt0313_1.value; //总楼层数
+		  
+		  var inpt0402=document.MyAddInfo.inpt0402.value;  //二套房产权人
+		  var inpt0402m=document.MyAddInfo.inpt0402m.value;  //二套房面积
+		  var inpt0403=$('#inpt0403 option:selected').text();  //二套房房屋类型
+		  var inpt0404=document.MyAddInfo.inpt0404.value;  //二套房房屋位置
+		  var inpt0404_1=document.MyAddInfo.inpt0404_1.value;  //二套房房屋详细位置
+		  
+		  var inpt0503=$('#inpt0503 option:selected').text();  //已押贷款种类
+		  var inpt0504=document.MyAddInfo.inpt0504.value;  //已押权利人
+		  var inpt5055m=document.MyAddInfo.inpt5055m.value;  //已押贷款金额
+		  var inpt5056m=document.MyAddInfo.inpt5056m.value;  //已押贷款余额
+		  var ownerNames = inpt0302.split("，");
+		  var namereg = /^[\u4E00-\u9FA5\·]{2,10}$/;
+		  var hzreg = /^[\u4E00-\u9FA5\·]{1,10}$/;
+		  var mathReg = /^[0-9]+(.[0-9]{0,2})?$/;
+		  var NUM_4 =/^([1-9]\d{0,3}|0)(\.\d{1,4})?$/;
+		  var lcReg = /^[0-9]{1,3}$/;
+			for ( var i = 0; i < ownerNames.length; i++) {
+				if(ownerNames[i] != '' && !namereg.test(ownerNames[i])){
+					alertMsg('产权人姓名填写有误,请不要有多余的（，）或非中文字符');
+					return false;
+				}
+			}
+			var houseLocatedTest = /[一二三四五六七八九十〇壹贰叁肆伍陆柒捌玖零1234567890]+/g;
+			if(inpt0311_1 != "" && !houseLocatedTest.test(inpt0311_1)){
+				alertMsg('房屋详细地址不完整');
+				return false;
+			}
+
+			  if(inpt0303val == '020' || inpt0303val == '030' || inpt0303val == '040' || inpt0303val == '050' ||inpt0303val == '070'  ){
+				      alertMsg('房产性质不符合宅e贷政策');
+					   return false;
+			  }
+			  if(inpt0304val != '10'){
+				      alertMsg('房屋类型不符合宅e贷政策');
+					   return false;
+			  }
+			  if(inpt0312 != '' && !NUM_4.test(inpt0312)){
+				      alertMsg('请正确填写房屋面积');
+					  return false;
+			  }
+			  if(inpt0313 != "" && !lcReg.test(inpt0313) || inpt0313=="0" ){
+				      alertMsg('请正确填写楼层');
+					   return false;
+			  }
+			  if(inpt0313_1 != "" && !lcReg.test(inpt0313_1) || inpt0313_1=="0" ){
+				      alertMsg('请正确填写总楼层');
+					   return false;
+			  }
+			  if(parseInt(inpt0313_1) < parseInt(inpt0313) ){
+				     alertMsg('楼层数不能大于总楼层数');
+					 return false;
+			  }
+			  //选中有二套房
+			  if($("#inpt04").is(':checked')){
+				  ownerNames =  inpt0402.split("，");
+				  for ( var i = 0; i < ownerNames.length; i++) {
+						if( ownerNames[i]!= "" && !namereg.test(ownerNames[i])){
+							alertMsg('二套房产权人姓名填写有误,请不要有多余的（，）或非中文字符');
+							return false;
+						}
+					}
+
+					if(inpt0402m !='' && !NUM_4.test(inpt0402m)){
+					      alertMsg('请正确填写二套房面积');
+						  return false;
+				   }
+			}
+	        //选中有抵押
+	       if($("#TwoHouse3").is(':checked') && $("#inpt05").is(':checked')){
+			  if(inpt5055m != "" && !mathReg.test(inpt5055m)){
+				      alertMsg('请填写一押贷款金额');
+					   return false;
+			  }
+			  if(inpt5056m != "" && !mathReg.test(inpt5056m)){
+				      alertMsg('请填写一押贷款余额');
+					   return false;
+			  }
+		   }
+	 	   return true;
+	}
+ window.onload=function(){
+	   $('.back1').css('display','none');
+	}
+</script>
+<script src="js/fangchan.js"></script>
+</body>
+   <!-- Google Tag Manager -->
+<!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script> -->
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+</html>
+

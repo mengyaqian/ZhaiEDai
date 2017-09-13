@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="静默注册失败">
+<meta name="keywords" content="静默注册失败">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="holding_banner1">
+      <img src="images/failed_banner1.jpg" width="100%" height="auto">
+    </div>
+    <div class="holding_banner2">
+      <div class="holding_tit">
+        <h3>您提交的信息注册失败</h3>
+		<p class="clear"><i class="dian"></i> <span
+		style="margin-top: 2px; float: left; width: 95%;">因您的身份证号已与<span
+		class="color1" id="oldMobile"></span>手机号绑定，导致APP注册失败。请拨打<a
+		href="tel:400-8580-580" class="color1">400-8580-580</a>联系客服反馈，将绑定手机号改为<span
+		class="color1" id="mobile"></span>，更改成功请使用该手机号登录APP继续申请。</span></p>
+<!-- <p class="clear"><i class="dian"></i><span style="margin-top:2px;float:left;width:95%;">您还可拨打客服电话<a href="tel:400-1000-800" class="color1">400-1000-800</a>进行咨询办理。</span></p> -->
+        <!-- 将有贷款专员与您联系处理该问题，请保持手机畅通。 -->
+      </div>
+    </div>
+    <div class="kefu_tel">
+      <img src="images/kefu_tel.png" width="100%">
+    </div>
+	<div class="bottom_remind"><img src="images/bottom.png" width="100%" height="auto"></div>
+</div>
+
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+$("#oldMobile").html(getUrlParam("oldMobile"));
+$("#mobile").html(getUrlParam("mobile"));
+//截取URL相关参数
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return unescape(r[2]);
+	return "";
+}
+</script>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+</html>
+

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="城市筛选">
+<meta name="keywords" content="城市筛选">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+<link href="css/default.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!-- 全屏背景弹框选择城市以及详细地址 -->
+<div class="dialog_full">
+    <div class="container">
+	     <div class="addresstop" style="display:none" ><span class="span1"></span><span class="span2"></span><span class="span3"></span></div>
+		 <div class="addressul"></div>
+	</div>
+</div>
+<div class="container">
+    <form name="step1">
+       <div class="s1top">
+	      <input class="cityf" type="text" id="tags" onfocus="blur()" readonly name="inpt0309"  placeholder="请选择房产所在地">
+		   <input type="button" class="jsq" value="还款计算器" id="btnNext-1">
+	   </div>
+	  
+    </form>
+	<div class="re"><h1>行政区</h1></div>  <!--存放区域的内容-->
+	<div class="cityli">
+	    <p class="step1_ti">请务必如实填写，否则将无法通过贷款审批</p>
+		<p class="hotctit">热门城市</p>
+		<ul class="hotcity">
+			<li data-cityCode="110000" data-provinceName="北京" data-gcityRelativeId="" data-cityFlowFlag="">北京</li>
+			<li data-cityCode="310000" data-provinceName="上海" data-gcityRelativeId="" data-cityFlowFlag="0">上海</li>
+			<li data-cityCode="440100" data-provinceName="广东省" data-gcityRelativeId="440000" data-cityFlowFlag="0">广州</li>
+			<li data-cityCode="440300" data-provinceName="广东省" data-gcityRelativeId="440000" data-cityFlowFlag="0" class="mr0">深圳</li>
+			<li data-cityCode="130700" data-provinceName="河北省" data-gcityRelativeId="130000" data-cityFlowFlag="0">张家口市</li>
+			<li data-cityCode="120000" data-provinceName="天津" data-gcityRelativeId="" data-cityFlowFlag="">天津</li>
+			<li data-cityCode="320200" data-provinceName="江苏省" data-gcityRelativeId="320000" data-cityFlowFlag="0">无锡</li>
+			<li data-cityCode="320400" data-provinceName="江苏省" data-gcityRelativeId="320000" data-cityFlowFlag="0" class="mr0">常州</li></ul>
+		<div class="clear"></div>
+	</div>
+    <div class="but_botton"><input type="button" value="下一步" class="mybutton" id="btnNext" ></div>
+	<p class="tc" style="height:20px;text-align:center;">
+      	<input type="checkbox" checked="checked" id="checkcheck"> 
+		<label for="checkcheck" style="font-family:'微软雅黑';font-size:12px"> 已阅读</label><a href="../../../faq/user/wx001.html" style="color:#dd2f00;font-family:'微软雅黑';font-size:12px">《个人信息共享授权书》</a>
+	</p>
+	
+</div>
+<div class="bottom_remind"><img src="images/bottom.png"></div>
+<div><img src="images/bottom_ad.png" width="100%"></div>
+<!-- 黑色半透明蒙版 -->
+	<div class="black_full" id="black_full1" ></div>
+	<!-- 提示准备材料页面 -->
+	<div class="step_dia2">
+	    <p class="wxts">温馨提示</p>
+	    <div><img src="images/bottom_ad.png" width="100%"></div>
+		<div class="ready_info">
+			<p style="margin-top:10px">请提前准备以下信息将有助于您快速申请</p>
+			<ul class="info_imgbd clear">
+				<li>
+				  <h3>身份证</h3>
+				  <img src="images/id_img.png" width="50%" height="auto"/>
+				</li>
+				<li>
+				  <h3>房产证</h3>
+				  <img src="images/house_img.png" width="50%" height="auto"/>
+				</li>
+				<li>
+				  <h3>银行卡</h3>
+				  <img src="images/bank_img.png" width="50%" height="auto"/>
+				</li>
+			</ul> 
+        </div> 
+		<a class="step1_know" href="step2.html" id="btnNext-2">知道了</a>
+	</div>
+<!-- 计算器 -->
+    <div class="weixin_alertbox" id="weixin_alertbox" >
+		<div class="alertbox_t" style="border-bottom:none;">
+			<h3>还款计算器</h3>
+			<div class="close_btn" onClick="document.querySelector('.weixin_alertbox').style.display='none';$('#black_full1').css('display','none');"></div>
+	   </div>
+	    <div class="input_box">
+		  <div class="house_jiazhi">
+			<i>我的房产价值</i>
+			<input type="text" placeholder="填写当前市场评估价值" class="jine" id="jine" maxlength="7">
+			<span>万元</span>
+		  </div>
+	   </div>
+	   <div class="qishu_box">
+		  <h3>选择借款期数</h3>
+		  <ul class="checkmonth clear">
+			<li><span class="six">6</span>个月</li>
+			<li><span class="twelve">12</span>个月</li>
+			<li><span class="twenty_four">24</span>个月</li>
+			<li><span class="thirty_six">36</span>个月</li>
+		  </ul>
+	   </div>
+	   <div class="button_count"><input type="button" value="计算" id="calculate"></div>
+	   <div class="banner_bg1">
+			<p>预估可贷金额 (万元)</p>
+			<p class="jine1" style="font-size: 25px">0</p>
+	   </div>
+	   <div class="banner_bg2" style="padding-top: 0px;">
+		 <p>预估每月还款金额 (元)</p>
+		 <div class="hearder_nav">
+			<h3 style="font-size:22px;color:#f34a45;margin-top:5px;" id="jine2">0.00</h3>
+            <div class="six_box1" style="display:none">
+              <ul>
+                <li><i class="style1">1期</i><span>37866.67</span></li>
+                <li><i class="style1">2期</i><span>37866.67</span></li>
+                <li><i class="style1">3期</i><span >37866.67</span></li>
+                <li><i class="style1">4期</i><span>37866.67</span></li>
+                <li><i class="style1">5期</i><span>37866.67</span></li>
+                <li><i class="style1">6期</i><span>37866.67</span></li>
+              </ul>
+            </div>
+            <div class="six_box2" style="display:none">
+              <ul>
+                <li><i class="style1">1期</i><span>37866.67</span></li>
+                <li><i class="style1">2期</i><span>37866.67</span></li>
+                <li><i class="style1">3期</i><span >37866.67</span></li>
+                <li><i class="style1">4期</i><span>37866.67</span></li>
+                <li><i class="style1">5期</i><span>37866.67</span></li>
+                <li><i class="style1">6期</i><span>37866.67</span></li>
+                <li><i class="style1">7期</i><span>37866.67</span></li>
+                <li><i class="style1">8期</i><span>37866.67</span></li>
+                <li><i class="style1">9期</i><span >37866.67</span></li>
+                <li><i class="style1">10期</i><span>37866.67</span></li>
+                <li><i class="style1">11期</i><span>37866.67</span></li>
+                <li><i class="style1">12期</i><span>37866.67</span></li>
+              </ul>
+            </div>
+            <div class="six_box3" style="display:none">
+              <ul>
+                <li><i class="style1">1期</i><span>37866.67</span></li>
+                <li><i class="style1">2期</i><span>37866.67</span></li>
+                <li><i class="style1">3期</i><span >37866.67</span></li>
+                <li><i class="style1">4期</i><span>37866.67</span></li>
+                <li><i class="style1">5期</i><span>37866.67</span></li>
+                <li><i class="style1">6期</i><span>37866.67</span></li>
+                <li><i class="style1">7期</i><span>37866.67</span></li>
+                <li><i class="style1">8期</i><span>37866.67</span></li>
+                <li><i class="style1">9期</i><span >37866.67</span></li>
+                <li><i class="style1">10期</i><span>37866.67</span></li>
+                <li><i class="style1">11期</i><span>37866.67</span></li>
+                <li><i class="style1">12期</i><span>37866.67</span></li>
+                <li><i class="style1">13期</i><span>37866.67</span></li>
+                <li><i class="style1">14期</i><span>37866.67</span></li>
+                <li><i class="style1">15期</i><span >37866.67</span></li>
+                <li><i class="style1">16期</i><span>37866.67</span></li>
+                <li><i class="style1">17期</i><span>37866.67</span></li>
+                <li><i class="style1">18期</i><span>37866.67</span></li>
+                <li><i class="style1">19期</i><span>37866.67</span></li>
+                <li><i class="style1">20期</i><span>37866.67</span></li>
+                <li><i class="style1">21期</i><span >37866.67</span></li>
+                <li><i class="style1">22期</i><span>37866.67</span></li>
+                <li><i class="style1">23期</i><span>37866.67</span></li>
+                <li><i class="style1">24期</i><span>37866.67</span></li>
+              </ul>
+            </div>
+            <div class="six_box4" style="display:none;">
+              <ul>
+                <li><i class="style1">1期</i><span>37866.67</span></li>
+                <li><i class="style1">2期</i><span>37866.67</span></li>
+                <li><i class="style1">3期</i><span >37866.67</span></li>
+                <li><i class="style1">4期</i><span>37866.67</span></li>
+                <li><i class="style1">5期</i><span>37866.67</span></li>
+                <li><i class="style1">6期</i><span>37866.67</span></li>
+                <li><i class="style1">7期</i><span>37866.67</span></li>
+                <li><i class="style1">8期</i><span>37866.67</span></li>
+                <li><i class="style1">9期</i><span >37866.67</span></li>
+                <li><i class="style1">10期</i><span>37866.67</span></li>
+                <li><i class="style1">11期</i><span>37866.67</span></li>
+                <li><i class="style1">12期</i><span>37866.67</span></li>
+                <li><i class="style1">13期</i><span>37866.67</span></li>
+                <li><i class="style1">14期</i><span>37866.67</span></li>
+                <li><i class="style1">15期</i><span >37866.67</span></li>
+                <li><i class="style1">16期</i><span>37866.67</span></li>
+                <li><i class="style1">17期</i><span>37866.67</span></li>
+                <li><i class="style1">18期</i><span>37866.67</span></li>
+                <li><i class="style1">19期</i><span>37866.67</span></li>
+                <li><i class="style1">20期</i><span>37866.67</span></li>
+                <li><i class="style1">21期</i><span >37866.67</span></li>
+                <li><i class="style1">22期</i><span>37866.67</span></li>
+                <li><i class="style1">23期</i><span>37866.67</span></li>
+                <li><i class="style1">24期</i><span>37866.67</span></li>
+                <li><i class="style1">25期</i><span>37866.67</span></li>
+                <li><i class="style1">26期</i><span>37866.67</span></li>
+                <li><i class="style1">27期</i><span>37866.67</span></li>
+                <li><i class="style1">28期</i><span>37866.67</span></li>
+                <li><i class="style1">29期</i><span>37866.67</span></li>
+                <li><i class="style1">30期</i><span>37866.67</span></li>
+                <li><i class="style1">31期</i><span>37866.67</span></li>
+                <li><i class="style1">32期</i><span>37866.67</span></li>
+                <li><i class="style1">33期</i><span>37866.67</span></li>
+                <li><i class="style1">34期</i><span>37866.67</span></li>
+                <li><i class="style1">35期</i><span>37866.67</span></li>
+                <li><i class="style1">36期</i><span>37866.67</span></li>
+              </ul>
+            </div>
+		 </div>
+	   </div>
+	  
+   </div>
+
+<script src="js/common.js"></script>
+<script src="js/artDialog.source.js" type="text/javascript"></script>
+<script src="js/step1.js"></script>
+</body>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+
+</html>
+

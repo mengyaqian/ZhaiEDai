@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="身份验证+鉴权">
+<meta name="keywords" content="身份验证+鉴权">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+<link href="css/default.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/artDialog.source.js" type="text/javascript"></script>
+<script src="js/jquery.cookie.js" ></script>
+</head>
+<body>
+<div class="container">
+   <div class="authen_banner">
+	   <img src="images/bank_card.png" width="100%" height="auto">
+	   <p class="authen_tit2"><i class="ii"></i>请如实填写本人身份信息及名下银行卡用于收放款，我们将验证是否真实有效<p>
+	</div>
+	<form name="step4">
+	<ul class="authen_ul" style="margin-bottom:10px;">
+	    <li><i>姓名</i><input type="text" name="names" placeholder="请输入与身份证一致的真实姓名" maxlength="10"></li>
+		<li class="bb0"><i>身份证号</i><input type="text" name="idcard" id="idcard" placeholder="仅支持18位二代身份证" ></li>
+		<input type="hidden" name="yz_bir"><!--隐藏通过身份证号获取出生年月日-->
+		<input type="hidden" name="yz_sex"><!--隐藏通过身份证号获取性别-->
+	</ul>
+	<ul class="authen_ul">
+	   <li><i>银行卡号</i><input type="tel" name="input_41" id="bank_num" placeholder="本人储蓄卡，每天三次机会" ></li>
+	   <li><i>手机号</i><input type="tel" name="input_42" id="input_42"  placeholder="银行卡预留手机号" maxlength="11"></li>
+	</ul>
+	</form>
+    <div class="card_remind" style="width:55%;float:left;"><i></i>平安普惠保障您的信息安全</div>
+	<p class="step4_b" id="seebank" style="width:30%;float:right;">查看支持的银行</p>
+	<div class="but_botton"><input type="button" value="确定" class="mybutton2" id="btnNext"></div>
+	<!-- 支持的银行弹框 -->
+	<div class="diabank" id="diabank1">
+	    <div class="bankbox">
+		   <p class="myclose" id="closediar"></p>
+	       <p class="b_tit">支持的银行</p>
+		    <ul class="bankul"><li>中国银行</li><li>农业银行</li><li class="mr0">工商银行</li><li>建设银行</li><li>邮储银行</li><li class="mr0">中信银行</li><li>华夏银行</li><li>民生银行</li><li class="mr0">兴业银行</li><li>浦发银行</li><li>上海银行</li><li class="mr0">光大银行</li><li>平安银行</li></ul>
+		</div>
+	</div>
+	
+
+	<!-- 黑色半透明蒙版 -->
+	<div class="black_full" id="black_full1"></div>
+</div>
+<div class="bottom_remind" style="bottom:-60px;"><img src="images/bottom.png"></div>
+<div><img src="images/bottom_ad.png" width="100%"></div>
+	<!-- 邀请码弹框 -->
+	<div class="diabank2" id="diabank2" >
+	    <div class="jdmess">
+		   <p class="myclose" id="closediar2"></p>
+		   <form name="yqmform">
+           <div class="jdbox" >
+		      <p><i>渠道名称</i><input type="text" value="http://www.baidu.com" readonly></p>
+ 			  <p><i>手机号码</i><input type="tel" name="zjd"></p>
+			  <div class="butt"><input type="button" value="确定"  class="btn_commom_bg" onclick="yqm_j()"></div>
+		   </div>
+		   </form>
+		</div>
+	</div>
+	<!-- 等待提示代码 -->
+   <div class="waitpic" id="waitpic" ><div class="waitbg"></div></div>
+<script src="js/step3.js" ></script>
+</body>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+
+</html>
+

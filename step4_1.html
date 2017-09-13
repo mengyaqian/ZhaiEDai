@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="共有人信息">
+<meta name="keywords" content="共有人信息">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+<link href="css/default.css" rel="stylesheet" type="text/css"/>
+<link href="css/mobiscroll.custom-2.5.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/jquery.cookie.js" ></script>
+<script src="js/artDialog.source.js" ></script>
+<script src="js/ownerSpouse.js" ></script>
+<script src="js/mobiscroll.custom-2.5.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="info_header">
+	   <div class="info_hl">平安普惠保障您的信息安全</div>
+	   <div class="info_hr"><span>客服电话</span><i></i><p>400-1000-800</p></div>
+	</div>
+	<!-- 共有人信息开始 -->
+	<form name="form31">
+	<div class="mybox">
+		
+	</div>
+	</form>
+	<!-- 共有人信息结束 -->
+	<div class="but_botton"><input type="button" value="下一步" id="btnNext"  class="mybutton2 step31reg"></div>
+
+	
+
+  <!-- 等待提示代码 -->
+   <div class="waitpic" id="waitpic"><div class="waitbg"></div></div>
+
+</div>
+<script>
+ var othercommon_n = $.cookie("othercommon_name"); //获取cookie
+ var myarr =new Array();
+// myarr =othercommon_n.split(',');
+var temp ='';
+var mycount = myarr.length;//用来计数
+	 /* $(".common_close").live("click",function(){
+               $(this).parent().parent().remove(); 
+			    for(i=$(this).index()-1;i<mycount;i++){
+                   myi=i+1;
+                   $(".mybox .common_box ").eq(i).find(".comm_p_span").text(myi);
+				}
+           })
+	  */
+	
+ //点击显示配偶信息
+$('.MCheck').live("click",function(){
+     var shows =$(this).parents('.myid').next();
+	 var yes = $(this).is(':checked');
+	 if( yes == true){
+	    shows.slideDown();
+	 }else{
+	     shows.slideUp();
+	 } 
+}) 
+ //显示出生日期
+	  function getContent(value,content,obj){
+		$(obj).parent().parent().parent().find("#input33").val("");
+	  	Have_bir = $(obj).parent().parent().nextAll('.birthdayid');
+		// alert("选中的值是"+value+"选中的内容是"+content);
+		 if(content == '身份证'){
+		 	Have_bir.css('display','none');
+		}else{
+		    Have_bir.css('display','block');
+		}
+	  }
+
+</script>
+</body>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+
+</html>
+

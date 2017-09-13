@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>申请取消</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="放款成功">
+<meta name="keywords" content="放款成功">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="success_banner">
+      <img src="images/cancel_baner.png" width="100%" height="auto">
+    </div>
+    <div class="success_text">
+      <p class="color1 pp1">申请已取消</p>
+	  <p style="text-align: center; width: 90%; margin: 0 auto 10px; line-height: 22px;">您的宅e贷申请已取消<br>
+	         该笔申请的房产证号为<br>
+	  <span style="color: #f7593b" id="houseNo"></span><br>
+	  <span style="color: #f7593b">请联系客服400-1000-800</span></p>
+    </div>
+    
+    <div style="position:fixed;left:0;bottom:0;">
+     <a href="http://www.10100000.com/m/daikuan/oto/1.0/index.html?WT.mc_id=CXX-WXDLUFAXHK-048-ZED2OTO&"><img src="images/fk_bottom.png" width="100%" height="auto"></a></div>
+</div>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+var houseNo = getUrlParam("houseNo");
+$("#houseNo").html(houseNo);
+//截取URL相关参数
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return unescape(r[2]);
+	return "";
+}
+$.ajax({
+	url : "/do/zed/getHouseNumByID",
+	type : "post",
+	dataType:"json",
+	success : function(response){
+		if(response.errorCode == '555'){
+			art.dialog({ 
+				  title:false,close:false,cancel:false,
+			      content: '系统异常，请稍后重试！',
+				  time:(2)
+			});
+			self.submitFlag1 = true;
+		}else if(response.resultCode == "0000"){
+			window.location = '/microWebsite/jdcx_check.html';
+		}else if(response.resultCode == "001"){
+			$("#houseNo").html(response.houseNum);
+		}else{
+			art.dialog({ 
+				  title:false,close:false,cancel:false,
+			      content: '系统异常！',
+				  time:(2)
+			});
+			self.submitFlag1 = true;
+		}
+	}
+});
+</script>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+</html>
+

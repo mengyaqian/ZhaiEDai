@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>平安普惠宅e贷</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="apple-touch-fullscreen" content="NO">
+<meta name="description" content="授权书">
+<meta name="keywords" content="授权书">
+<link href="css/mobile.css" rel="stylesheet" type="text/css"/>
+<link href="css/default.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/artDialog.source.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+   <div class="ready_info2 clear" style="padding:3% 6%;box-sizing: border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
+      <i></i><span>为了维护您的权益，请在签署前仔细阅读本授权书中的各项条款</span>
+    </div>
+    <div class="shouquan_bd">
+      <p>本人知晓并同意平安普惠依据《征信业管理条例》及相关法律法规，向第三方征信机构提交本人在此笔借贷业务中产生的相关信息，包括但不限于个人基本信息、借款申请信息、借款合同信息以及还款行为信息，并记录在征信机构的个人信用信息数据库中。</p>
+      <div class="text_url">
+       <a href="javascript:show_sqs()" class="color3">《综合授权书》</a>
+      </div>
+      <div class="shouquan_f">
+        <div class="qian_name">
+        <!--<label>客户签名：</label><i class="qm"></i>
+		--><img id='xss_20' alt='' class="qmwc" style="display:none"/>
+		<p id="zpp" style="display:none;">客户签名：</p>
+        </div>
+        <div class="qian_nametimes">
+        <label>日期：</label>
+        <span id="signDate">2015-12-15</span>
+        </div>
+      </div>
+    </div>
+    <div class="sq_f">
+      <img src="images/sq_f.png" width="100%">
+    </div>
+	<!-- 签名 -->
+	     <div class="qianmingPage" id='qianmingPage'>
+        <canvas id="myCanvas"></canvas>
+        <div class="btnWrapper">
+             <button id="cancel" ><img src="images/btnCancel.png" ></button>
+            <button id="clear"><img src="images/btnClear.png"></button>
+            <button id="save"><img src="images/btnSure.png"></button>
+
+        </div>
+    </div>
+
+	<!--  -->
+    <div class="but_botton" id=""><input type="button" value="授权并签名" class="mybutton btn_commom_bg" id="btnNext-SGN"></div>
+	    <section class="qianmingPage" id='dialog'>
+    	<div id="anysign_title" style="color:#333333;" width="0%" height="0%">请投保人<span style="font-size:20pt;" > </span>签名</div>
+        <div id="container"  onmousedown = "return false;">
+            <canvas id="anysignCanvas" width="100%" height="90%">
+            </canvas>
+        </div>
+        <div id="btnContainerOuter">
+            <div id="btnContainerInner" style="text-align: center;  font-size:5pt;" width="100%">
+                <input id="btnNext" type="image" value="确 定" src="images/btnSure.png" class="button orange" style="width: 84px;margin: 0;padding: 0;border: 0;margin-right: 6px;">
+                <input id="btnNext-CLR" type="image" value="确 定" src="images/btnClear.png" class="button orange" style="width: 84px;margin: 0;padding: 0;border: 0;">
+                <input id="btnNext-CNL" type="image" value="确 定" src="images/btnCancel.png" class="button orange" style="width: 84px;margin: 0;padding: 0;border: 0;margin-left: 6px;">
+            </div>
+        </div>
+    </section>
+    <div class="bottom_remind" id="bottom_remind" ><img src="images/bottom.png" ></div>
+</div>
+
+<!--  综合授权书弹框 -->
+<!-- <div class="dialog_full" > -->
+   <div class="sqs_box" style="display:none">
+      <p class="myclose" onclick="close_sqs()"></p>
+      <h1 class="h1_tit">特别提醒：</h1>
+	  <p>在您确认签署本文件之前，请您务必仔细阅读本文件的所有条款。一旦您签署本 文件，即意味着您已充分理解本文件所有条款的含义及相应的法律后果，同意以数据电文形式向【深圳平安普惠小额贷款有限公司】与【平安普惠融资担保有限公司】给予本文件 中的各项授权，且即使您的贷款服务申请未被审核通过，本文件各项授权的有效性不受影响。</p>
+      <div class="whitebg">
+	      <div class="logo"></div>
+	      <h1 class="h1_tit2">个人征信查询及信息使用授权书</h1>
+		  <p class="p1">深圳平安普惠小额贷款有限公司（下称“小贷公司”）、 平安普惠融资担保有限公司（下称“担保公司”）：</p>
+          <div class="tit_common"><s class="s1"></s><p class="p2">个人征信查询授权</p><s class="s2"></s></div>
+          <p>因本人向小贷公司申请贷款（下称“本业务”），并向担保公司申请为该笔贷款 提供担保，基于业务的需要，本人现授权小贷公司及担保公司向中国人民银行信用信息基础数据库和经中国人民银行批准设立的征信机构 （以下合称“征信中心”）采集、查询、使用、报送本人的征信信息（含不良信息），并对小贷公司和担保公司具体授权如下：</p>	
+          <p>1、向征信中心报送、查询、使用本人的贷款等业务信息及其他相关信息（下称 “本人信息”），含到期未及时还款等不良信息。</p>	
+          <p>2、以上信息的授权仅限于本业务的授信额度申请、审批、额度使用、贷后管理及 催收等用途。不管本业务申请是否获批，该授权均有效。</p>	
+          <p>3、以上信息的授权期间：自本征信查询授权书签署之日起至本业务项下本人结清 全部欠款并终止本业务之日止。</p>
+          <p>4、本人完全知晓并理解，征信中心已通过小贷公司或担保公司明确告知本人：小 贷公司和担保公司向征信中心提供本人信息可能产生的各种不利后果，包括但不限于第三方通过各种手段或方式获取或使用本人信息，可 能会给本人造成人身或财产的损害，或是造成本人预期利益减少或损失扩大，或是其他不良或不利影响等。</p>
+          <p>5、本人同意征信中心通过小贷公司或担保公司采集本人信息，并依法使用，包括 但不限于在加工、提供征信产品时使用本人信息。本人就征信中心采集本人信息的行为本身放弃提起诉讼或其他任何主张的权利，但《征 信业管理条例》赋予本人的法定权利除外。</p>
+		  <p><strong>本人确认本人点击同意本授权书即表示：</strong></p>
+		  <p>本人对上述5项 有关信用信息的条款已经阅悉，均无异议，并对本人在上述5项条款下应 承担的义务和责任的法律含义有准确无误的理解。以上授权一经做出，不可撤销或变更。</p>
+		  <p><strong>小贷公司和担保公司承诺：</strong>将严格遵照《征信业管理条例》等相关法律法规及监管规定，在客户授权范围内 谨慎使用以上信息并严格保密。</p>
+		  
+		  <div class="tit_common"><s class="s1"></s><p class="p2">其他个人信息</p><s class="s2"></s></div>
+          <p>1.本人授权平安集团，除法律另有规定之外，将本人提供给平安集团的信息、享受平安 集团服务产生的信息（包括授权书签署之前提供和产生的信息）以及平安集团根据本授权书约定查询、收集的信息，用于平安集团及其因 服务必要委托的合作伙伴为本人提供服务、推荐产品、开展市场调查与信息数据分析。</p>
+          <p>2.本人授权平安集团，除法律另有规定之外，基于为本人提供更优秀服务和产品的目 的，向平安集团因服务必要开展合作的伙伴提供、查询、收集本人的信息。</p>
+          <p>3.为确保本人信息的安全性，平安集团及其合作伙伴对上述信息负有保密义务，并采取 各种措施保证信息安全。</p>
+          <p>4.本人授权平安集团，可以将本人提供的抵押物权属证明文件向专业房地产评估机构披 露，由专业房地产评估师对全部或部分抵押物的市场价值进行评估，以便为本人提供更好的金融服务。</p>
+          <p>5.本授权自授权书签署时生效，具有独立法律效力，不受合同成立与否及效力状态变化 的影响。<strong>如您不同意本授权条款的部分或全部，可联系客服取消或变更授权。</strong></p>
+   
+		  <p><strong>注：</strong>在本《个人征信查询及信息使用授权书》内，“平安集团”是指中 国平安保险（集团）股份有限公司及其直接或间接控股的公司，以及中国平安保险（集团）股份有限公司直接或间接作为其单一最大股东 的公司。</p>
+	</div>
+	 <div class="bottom_remind" style="position:relative"><img src="images/bottom.png" width="100%" height="auto"></div>
+   </div>
+    <div class="shenpiWrap" id="quanquan" hidden="" style="width: 100%; height: 100%; display: none;position: absolute;top: 0px;background: #000;opacity: 0.75;">
+	  <div class="zidong" style="margin-top: 250px;">
+	    <p class="tc"><img src="images/loading.gif" width="15%"></p>
+	    <p class="tc" style="color: #fff;" id="shenpi_desc">10秒完成自动审批,请稍候...</p>
+	  </div>
+	</div>
+	<div class="waitpic" id="waitpic"><div class="waitbg"></div></div>
+<script src="js/step5.js"></script>
+<script src="/m/product/reloan/1.0/js/signature/anysignWebInterface.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/mobiscroll.custom-2.5.0.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+function show_sqs(){
+	   $('.container').css('display','none');
+	   $('.sqs_box').css('display','block');
+	}
+	function close_sqs(){
+		  $('.sqs_box').css('display','none');
+		  $('.container').css('display','block');
+	}
+
+</script>
+</body>
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWWS7Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWWS7Z');
+</script>
+<!-- End Google Tag Manager -->
+<!--数据统计-->
+
+</html>
+
